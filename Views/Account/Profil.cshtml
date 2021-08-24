@@ -1,0 +1,65 @@
+﻿@model ADIM_2.Models.Account.ProfilModels
+
+@{
+    ViewBag.Title = string.Format("{0} {1}", Model.Members.name, Model.Members.surname);
+    var currentUser=((ADIM_2.DB.Members)Session["LogonUser"]);
+}
+
+<div class="row mt-4">
+    <div class="col-md-12 my-4">
+        <h2>Profil Sayfası</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 text-center">
+        <img src="http://placehold.it/150x150" class="rounded-circle img-fluid img-thumbnail">
+    </div>
+    @*< class="col-md-8">*@
+    <div class="form-group row">
+        <label class="text-danger col-md-2">ADI :</label>
+        <label class="col-md-10">@Model.Members.name</label>
+    </div>
+
+    <div class="form-group row">
+        <label class="text-danger col-md-2"> SOYADI :</label>
+        <label class="col-md-10">@Model.Members.surname</label>
+    </div>
+
+    <div class="form-group row">
+        <label class="text-danger col-md-2"> E-posta :</label>
+        <label class="col-md-10">@Model.Members.email</label>
+    </div>
+    <br /><br />
+
+
+   
+</div>
+</div>
+@if (Session["LogonUser"] != null && (currentUser.id == Model.Members.id))
+{
+    <div class="row">
+        <div class="col-md-20" style="text-align:center;">
+            
+            <a href=""~/product/i" class="btn btn-info">
+                <span class="glyphicon glyphicon-plus"></span>Ürünler
+            </a>
+
+               
+            
+            <a href="#" class="btn btn-warning" >
+                <span class="glyphicon glyphicon-trash"></span>Düzenle
+            </a>
+            <a href="#" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span> Sil
+            </a>
+        </div>
+    </div>
+    
+
+
+
+
+        }
+

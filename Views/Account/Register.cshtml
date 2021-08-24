@@ -1,0 +1,77 @@
+﻿@model ADIM_2.Models.Account.RegisterModels
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        @using (Html.BeginForm())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h3>
+                        <span class="fa fa-user fa-2x"></span>
+                    </h3>
+
+                    <h2>Register</h2>
+                    @if (ViewBag.ReError != null && string.IsNullOrEmpty((string)ViewBag.ReError) == false)
+                    {
+                        <small style="color:red;">@ViewBag.ReError</small>
+                    }
+                    else
+                    {
+                        <small>Please enter e-mail and password.</small>
+                    }
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                       
+                      
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.name, new { @class = "form-control", placeholder = "name", type = "text", required = "required" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.surname, new { @class = "form-control", placeholder = "surname", type = "text", required = "required" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.email, new { @class = "form-control", placeholder = "e-mail address", type = "email", required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.password, new { @class = "form-control", placeholder = "password", type = "password", required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.rePassword, new { @class = "form-control", placeholder = "re-password", type = "password", required = "required" })
+                    </div>
+
+                </div>
+                <div class="panel-footer text-right">
+                    <a href="@Url.Action("Login","Account")" class="btn btn-info">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-floppy-saved"></span> Register
+                    </button>
+
+                </div>
+            </div>
+        }
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

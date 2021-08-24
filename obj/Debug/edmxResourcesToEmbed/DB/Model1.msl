@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OffersModelStoreContainer" CdmEntityContainer="OffersEntities1">
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="OffersModel.Members">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="offers">
+      <EntityTypeMapping TypeName="OffersModel.offers">
+        <MappingFragment StoreEntitySet="offers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="offerHead" ColumnName="offerHead" />
+          <ScalarProperty Name="offerValue" ColumnName="offerValue" />
+          <ScalarProperty Name="offerCreateTime" ColumnName="offerCreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productcategories">
+      <EntityTypeMapping TypeName="OffersModel.productcategories">
+        <MappingFragment StoreEntitySet="productcategories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="OffersModel.products">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="offerCreateTime" ColumnName="offerCreateTime" />
+          <ScalarProperty Name="offerFinishedTime" ColumnName="offerFinishedTime" />
+          <ScalarProperty Name="productImage" ColumnName="productImage" />
+          <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+          <ScalarProperty Name="productSubDescription" ColumnName="productSubDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

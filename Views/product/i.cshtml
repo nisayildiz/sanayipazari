@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ADIM_2.DB.products>
+
+@{
+    ViewBag.Title = "i";
+}
+
+<h2>ÜRÜNLER</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ürün", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.productName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.offerCreateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.offerFinishedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productSubDescription)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.productName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.offerCreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.offerFinishedTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productSubDescription)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.id }) |
+            
+            @Html.ActionLink("Sil", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

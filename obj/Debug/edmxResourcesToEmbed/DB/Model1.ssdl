@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OffersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="surname" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="offers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="offerHead" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="offerValue" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="offerCreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="productcategories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="categoryId" Type="int" Nullable="false" />
+    <Property Name="productName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="offerCreateTime" Type="datetime" />
+    <Property Name="offerFinishedTime" Type="datetime" />
+    <Property Name="productImage" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="productDescription" Type="text" Nullable="false" />
+    <Property Name="productSubDescription" Type="text" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_offers_products">
+    <End Role="products" Type="Self.products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="offers" Type="Self.offers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="offers">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_products_productcategories">
+    <End Role="productcategories" Type="Self.productcategories" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productcategories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OffersModelStoreContainer">
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="offers" EntityType="Self.offers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productcategories" EntityType="Self.productcategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_offers_products" Association="Self.FK_offers_products">
+      <End Role="products" EntitySet="products" />
+      <End Role="offers" EntitySet="offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_products_productcategories" Association="Self.FK_products_productcategories">
+      <End Role="productcategories" EntitySet="productcategories" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,48 @@
+﻿
+@model ADIM_2.Models.i.IndexModel
+@{
+    ViewBag.Title = "Index";
+    List<ADIM_2.DB.productcategories> productcategories = new List<ADIM_2.DB.productcategories>();
+    if (Model.category != null)
+    {
+        productcategories.Add(Model.category);
+    }
+}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("index","i")"> ANA SAYFA</a></li>
+
+
+            @foreach (var category in productcategories)
+            {
+                <li><a href="@Url.Action("index","i",new { id = category.id })"> @category</a></li>
+            }
+
+
+
+
+
+            <span class="breadcrumb-item active" style="margin-left:30px;">DEMİR ÇELİK</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">ELEKTRONİK MALZEMELERİ</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">ELEKTRİK MOTORLARI</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">REDÜKTÖR</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">RULMAN,KEÇE VE KAYIŞ</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">HIRDAVAT</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">LAZER KESİM VE PLAZMA ÜRÜNLERİ</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">SANAYİ MAKİNALARI</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">KALIP SANAYİ</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">DİŞLİ SANAYİ</span>
+            <span class="breadcrumb-item active" style="margin-left:10px;">ALÜMİNYUM</span>
+
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+
+    @foreach (var item in Model.products)
+    {
+        @Html.Partial("productItem", item);
+    }
+</div>
